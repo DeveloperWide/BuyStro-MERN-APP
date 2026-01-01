@@ -34,4 +34,5 @@ wishlistSchema.pre("save", function (next) {
 });
 
 const Wishlist = model("Wishlist", wishlistSchema);
+
 export default Wishlist;

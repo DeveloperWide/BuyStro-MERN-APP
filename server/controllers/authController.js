@@ -5,6 +5,8 @@ import Cart from "../models/Cart.js";
 
 const JWT_ACCESS =
   process.env.JWT_ACCESS || "748342200ced2da87e30e104c935c39719c5f6d8";
+const JWT_REFRESH =
+  process.env.JWT_REFRESH || "d9fd1c4ddcecc467dfd4e7f0fd599b64c2900a07";
 
 export const signup = async (req, res) => {
   try {
@@ -137,6 +139,7 @@ export const login = async (req, res) => {
 
 export const refreshToken = async (req, res) => {
   const refreshToken = req.cookies.refreshToken;
+  console.log(refreshToken);
 
   if (!refreshToken) {
     return res.status(401).json({
@@ -145,7 +148,7 @@ export const refreshToken = async (req, res) => {
   }
 
   try {
-    const decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH);
+    const decoded = jwt.verify(refreshToken, JWT_REFRESH);
 
     const user = await User.findById(decoded.userId);
 
@@ -171,6 +174,7 @@ export const refreshToken = async (req, res) => {
       accessToken: newAccessToken,
     });
   } catch (err) {
+    console.log(err);
     return res.status(401).json({
       message: "Invalid Refresh Token",
     });
@@ -181,7 +185,7 @@ export const logout = async (req, res) => {
   const refreshToken = req.cookies.refreshToken;
   console.log("Refresh Token : ", refreshToken);
   if (refreshToken) {
-    const decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH);
+    const decoded = jwt.verify(refreshToken, JWT_REFRESH);
     if (decoded?.userId) {
       const user = await User.findById(decoded.userId);
       user.refreshToken = null;
