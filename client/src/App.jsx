@@ -51,7 +51,6 @@ const App = () => {
       </Route>
     </Routes>
   );
-  hello;
 };
 
 export default App;

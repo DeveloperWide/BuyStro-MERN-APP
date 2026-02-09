@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { ShoppingCart } from "lucide-react";
+import { HeartIcon, ShoppingCart } from "lucide-react";
 import { addItem } from "../services/cartService";
 import { truncateText } from "../utils/helper";
 import { addItemLocal } from "../redux/cartSlice/cartSlice";
@@ -33,9 +33,13 @@ const ProductCard = ({ Title, Description, ImageSrc, productId, Price }) => {
           />
         </figure>
         {/* Price */}
-        <h2 className="px-3 pt-2 text-2xl font-bold">
-          <span className="text-sm pr-0.5">₹</span>
-          {Price}
+        <h2 className="px-3 pt-2 flex justify-between items-center">
+          <p className="text-2xl font-bold">
+            <span className="text-sm pr-0.5">₹</span>
+            {Price}
+          </p>
+
+          <HeartIcon className="inline-block float-right w-5 h-5 text-red-500 cursor-pointer hover:scale-110 transition-transform duration-200" />
         </h2>
 
         {/* Title & Description */}

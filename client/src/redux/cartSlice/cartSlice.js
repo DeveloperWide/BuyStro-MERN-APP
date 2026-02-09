@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // Helper function to recalc total
 const calculateTotal = (items) => {
-  return items.reduce((prev, item) => prev + item.price * item.quantity, 0);
+  return items.reduce((prev, item) => {
+    return prev + item.price * item.quantity;
+  }, 0);
 };
 
 const initialState = {
@@ -31,7 +33,7 @@ const cartSlice = createSlice({
     removeItemLocal: (state, action) => {
       // Remove by id
       state.cart.items = state.cart.items.filter(
-        (item) => item._id !== action.payload
+        (item) => item._id !== action.payload,
       );
       state.cart.totalPrice = calculateTotal(state.cart.items);
     },

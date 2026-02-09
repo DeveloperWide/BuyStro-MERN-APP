@@ -1,10 +1,12 @@
 import SearchInput from "../components/SearchInput";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../redux/authSlice/authSlice";
 import axios from "axios";
 import { Link } from "react-router";
+
+// Logout icon & action
 import { LogOut } from "lucide-react";
-import { useEffect, useState } from "react";
+import { logout } from "../redux/authSlice/authSlice";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
