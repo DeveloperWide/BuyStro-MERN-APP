@@ -3,10 +3,11 @@ import logo from "../../public/BuyStro.png";
 
 const Footer = () => {
   return (
-    <div>
+    <div className="bg-[#e5dedee5]">
+      {/* <hr className="w-full bg-[#33333369] text-[#3333335d]" /> */}
       {/* TODO: using grid can be a better option */}
-      <div className="flex py-4">
-        <div className="brand w-[30%]">
+      <div className="grid grid-cols-1 place-content-center place-items-center sm:grid-cols-2 lg:grid-cols-4 gap-6 py-4 lg:px-3">
+        <div className="brand cols-span-1">
           <h2 className="flex pb-4 px-2">
             <img src={logo} alt="Brand Logo" className="h-10" />
             <span className="self-end text-[#EE3372] text-2xl">uyStro</span>
@@ -17,7 +18,7 @@ const Footer = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
         </div>
-        <section className="services w-[30%]">
+        <section className="services hidden md:inline-block md:cols-span-1">
           <h2 className="text-xl font-bold py-2">Services</h2>
           <ul className="list-disc pl-10 ">
             <li>
@@ -37,47 +38,49 @@ const Footer = () => {
             </li>
           </ul>
         </section>
-        <section className="company w-[30%]">
-          <h2 className="text-xl font-bold py-2">Company</h2>
-          <ul className="list-disc pl-10 ">
-            <li>
-              <Link>Who we are</Link>
-            </li>
-            <li>
-              <Link>Our Services</Link>
-            </li>
-            <li>
-              <Link>Our Clients</Link>
-            </li>
-            <li>
-              <Link>Pricing</Link>
-            </li>
-            <li>
-              <Link>Contact Us</Link>
-            </li>
-          </ul>
-        </section>
-        <section className="contact w-[30%]">
-          <h2 className="text-xl font-bold py-2">Contact us.</h2>
-          <p className="pl-10 pb-3">
-            <b>Call :</b>
-            <br />
-            <span className="text-gray-600">+913984589349</span>
-          </p>
-          <p className="pl-10">
-            <b>Email :</b>
-            <br />
-            <span className="text-gray-600">user@example.com</span>
-          </p>
-          <hr className="w-14 h-4 bg-teal-800 text-teal-800 ms-12 my-3" />
-        </section>
-        <div className="follow_us"></div>
+        {/* <hr className="md:hidden col-span-2 w-full" /> */}
+        <div className="grid grid-cols-2 lg:col-span-2 place-items-center place-content-center gap-x-5">
+          <section className="company cols-span-1">
+            <h2 className="text-xl font-bold py-2">Company</h2>
+            <ul className="list-disc pl-10 ">
+              <li>
+                <Link>Who we are</Link>
+              </li>
+              <li>
+                <Link>Our Services</Link>
+              </li>
+              <li>
+                <Link>Our Clients</Link>
+              </li>
+              <li>
+                <Link>Pricing</Link>
+              </li>
+              <li>
+                <Link>Contact Us</Link>
+              </li>
+            </ul>
+          </section>
+          <section className="contact cols-span-1">
+            <h2 className="text-xl font-bold py-2">Contact us.</h2>
+            <p className="pl-10 pb-3">
+              <b>Call :</b>
+              <br />
+              <span className="text-gray-600">+913984589349</span>
+            </p>
+            <p className="pl-10">
+              <b>Email :</b>
+              <br />
+              <span className="text-gray-600">user@example.com</span>
+            </p>
+            <hr className="w-14 h-4 bg-teal-800 text-teal-800 ms-12 my-3" />
+          </section>
+        </div>
       </div>
       <div className="bottom_links bg-[#11161e] h-20 py-4 px-3 md:px-10 w-full flex flex-col md:flex-row items-center justify-between text-white">
         <div className="pages flex ml-3 gap-5 h-[50%]">
           <Link>Privacy Policy</Link>
-          <hr className="h-full w-0.5 text-[#df361c] bg-[#df361c] rounded-[50%]" />
-          <Link>Our History</Link>
+          <hr className="h-full w-0.5 text-[#df361c] bg-[#df361c] rounded-[50%] hidden md:inline-block" />
+          <Link className="hidden md:inline-block">Our History</Link>
           <hr className="h-full w-0.5 text-[#df361c] bg-[#df361c] rounded-[50%]" />
           <Link>What we do</Link>
         </div>

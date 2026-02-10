@@ -19,6 +19,7 @@ const App = () => {
     axiosInstance
       .get("/auth/refresh")
       .then((res) => {
+        console.log(res.data.cart);
         dispatch(setAccessToken(res.data.accessToken));
         dispatch(setUser(res.data.user));
         dispatch(setCart(res.data.cart));
