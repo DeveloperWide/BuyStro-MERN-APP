@@ -22,15 +22,25 @@ const cartSchema = new Schema(
     ],
     totalPrice: { type: Number, default: 0 },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 cartSchema.pre("save", function (next) {
   this.totalPrice = this.items.reduce(
     (acc, item) => acc + item.price * item.quantity,
-    0
+    0,
   );
   next();
+});
+
+cartSchema.set("toJSON", {
+  transform: (_doc, ret) => {
+    delete ret._id;
+    delete ret.__v;
+    delete ret.createdAt;
+    delete ret.updatedAt;
+    return ret;
+  },
 });
 
 const Cart = model("Cart", cartSchema);
