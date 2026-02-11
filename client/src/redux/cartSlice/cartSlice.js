@@ -21,7 +21,7 @@ const cartSlice = createSlice({
   reducers: {
     setCart: (state, action) => {
       // Full cart from backend
-      state.cart = action.payload;
+      state.cart = action.payload; // cart object {user,  items: [], totalPrice}
     },
 
     addItemLocal: (state, action) => {

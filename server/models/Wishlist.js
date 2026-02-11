@@ -21,11 +21,6 @@ const wishlistSchema = Schema({
       },
     },
   ],
-
-  totlePrice: {
-    type: Number,
-    required: true,
-  },
 });
 
 wishlistSchema.pre("save", function (next) {

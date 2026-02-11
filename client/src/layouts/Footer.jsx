@@ -3,95 +3,97 @@ import logo from "../../public/BuyStro.png";
 
 const Footer = () => {
   return (
-    <div className="bg-[#e5dedee5]">
-      {/* <hr className="w-full bg-[#33333369] text-[#3333335d]" /> */}
-      {/* TODO: using grid can be a better option */}
-      <div className="grid grid-cols-1 place-content-center place-items-center sm:grid-cols-2 lg:grid-cols-4 gap-6 py-4 lg:px-3">
-        <div className="brand cols-span-1">
-          <h2 className="flex pb-4 px-2">
-            <img src={logo} alt="Brand Logo" className="h-10" />
-            <span className="self-end text-[#EE3372] text-2xl">uyStro</span>
-          </h2>
+    <footer className="bg-[#f4f4f5] text-gray-700">
+      {/* Top Section */}
+      <div className="max-w-7xl mx-auto px-6 py-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Brand */}
+        <div>
+          <div className="flex items-center gap-2 mb-4">
+            <img src={logo} alt="BuyStro Logo" className="h-10" />
+            <span className="text-2xl font-bold text-[#EE3372]">BuyStro</span>
+          </div>
 
-          <h2 className="px-2 py-3 text-xl font-bold">About us.</h2>
-          <p className="px-2 pb-3 text-gray-600">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <h3 className="text-lg font-semibold mb-2">About Us</h3>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            We help businesses build better digital experiences through
+            strategy, design, and technology.
           </p>
         </div>
-        <section className="services hidden md:inline-block md:cols-span-1">
-          <h2 className="text-xl font-bold py-2">Services</h2>
-          <ul className="list-disc pl-10 ">
-            <li>
-              <Link>Planning</Link>
-            </li>
-            <li>
-              <Link>Research</Link>
-            </li>
-            <li>
-              <Link>Consulting</Link>
-            </li>
-            <li>
-              <Link>Analysis</Link>
-            </li>
-            <li>
-              <Link>User Testing</Link>
-            </li>
+
+        {/* Services */}
+        <div className="hidden md:block">
+          <h3 className="text-lg font-semibold mb-4">Services</h3>
+          <ul className="space-y-2 text-sm">
+            {[
+              "Planning",
+              "Research",
+              "Consulting",
+              "Analysis",
+              "User Testing",
+            ].map((item) => (
+              <li key={item}>
+                <Link className="hover:text-[#EE3372] transition">{item}</Link>
+              </li>
+            ))}
           </ul>
-        </section>
-        {/* <hr className="md:hidden col-span-2 w-full" /> */}
-        <div className="grid grid-cols-2 lg:col-span-2 place-items-center place-content-center gap-x-5">
-          <section className="company cols-span-1">
-            <h2 className="text-xl font-bold py-2">Company</h2>
-            <ul className="list-disc pl-10 ">
-              <li>
-                <Link>Who we are</Link>
+        </div>
+
+        {/* Company */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Company</h3>
+          <ul className="space-y-2 text-sm">
+            {[
+              "Who we are",
+              "Our Services",
+              "Our Clients",
+              "Pricing",
+              "Contact Us",
+            ].map((item) => (
+              <li key={item}>
+                <Link className="hover:text-[#EE3372] transition">{item}</Link>
               </li>
-              <li>
-                <Link>Our Services</Link>
-              </li>
-              <li>
-                <Link>Our Clients</Link>
-              </li>
-              <li>
-                <Link>Pricing</Link>
-              </li>
-              <li>
-                <Link>Contact Us</Link>
-              </li>
-            </ul>
-          </section>
-          <section className="contact cols-span-1">
-            <h2 className="text-xl font-bold py-2">Contact us.</h2>
-            <p className="pl-10 pb-3">
-              <b>Call :</b>
-              <br />
-              <span className="text-gray-600">+913984589349</span>
-            </p>
-            <p className="pl-10">
-              <b>Email :</b>
-              <br />
-              <span className="text-gray-600">user@example.com</span>
-            </p>
-            <hr className="w-14 h-4 bg-teal-800 text-teal-800 ms-12 my-3" />
-          </section>
+            ))}
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Contact</h3>
+
+          <p className="text-sm mb-3">
+            <span className="font-medium">Call</span>
+            <br />
+            <span className="text-gray-600">+91 39845 89349</span>
+          </p>
+
+          <p className="text-sm">
+            <span className="font-medium">Email</span>
+            <br />
+            <span className="text-gray-600">user@example.com</span>
+          </p>
+
+          <div className="mt-4 h-1 w-12 bg-[#EE3372] rounded"></div>
         </div>
       </div>
-      <div className="bottom_links bg-[#11161e] h-20 py-4 px-3 md:px-10 w-full flex flex-col md:flex-row items-center justify-between text-white">
-        <div className="pages flex ml-3 gap-5 h-[50%]">
-          <Link>Privacy Policy</Link>
-          <hr className="h-full w-0.5 text-[#df361c] bg-[#df361c] rounded-[50%] hidden md:inline-block" />
-          <Link className="hidden md:inline-block">Our History</Link>
-          <hr className="h-full w-0.5 text-[#df361c] bg-[#df361c] rounded-[50%]" />
-          <Link>What we do</Link>
+
+      {/* Bottom Bar */}
+      <div className="bg-[#11161e] text-gray-300">
+        <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-3">
+          <div className="hidden md:flex gap-6 text-sm">
+            <Link className="hover:text-white transition">Privacy Policy</Link>
+            <Link className="hover:text-white transition">Our History</Link>
+            <Link className="hover:text-white transition">What We Do</Link>
+          </div>
+
+          <p className="text-xl md:text-sm text-center">
+            © 2026 BuyStro.{" "}
+            <span className="inline">
+              All images are for demo purposes only.
+            </span>
+          </p>
         </div>
-        <p className="py-2">
-          &copy; 2026 BuyStro.{" "}
-          <span className="hidden md:inline-block">
-            All images are demo purposes only.
-          </span>
-        </p>
       </div>
-    </div>
+    </footer>
   );
 };
 

@@ -1,11 +1,8 @@
 import express from "express";
+import { isAuthenticated } from "../middlewares/isAuthenticated.js";
+import { getItems } from "../controllers/wishlistController.js";
 const router = express.Router({});
 
-router.get("/", (req, res) => {
-  return res.status(200).json({
-    success: true,
-    message: "Wishlist Items",
-  });
-});
+router.get("/", isAuthenticated, getItems);
 
 export default router;

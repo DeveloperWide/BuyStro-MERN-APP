@@ -46,7 +46,7 @@ export const addItem = async (req, res) => {
     }
 
     const existingItem = cart.items.find(
-      (item) => item.Product.toString() === Product
+      (item) => item.Product.toString() === Product,
     );
 
     if (existingItem) {
@@ -63,7 +63,7 @@ export const addItem = async (req, res) => {
     const svdItem = await cart.save();
 
     const idx = svdItem.items.findIndex(
-      (item) => item.Product.toString() === Product
+      (item) => item.Product.toString() === Product,
     );
     await svdItem.populate(`items.${idx}.Product`);
 
