@@ -27,9 +27,9 @@ import User from "../models/User.js";
 
 export const addItem = async (req, res) => {
   try {
-    const { Product, price, quantity } = req.body;
+    const { product, price, quantity } = req.body;
 
-    if (!price || !Product || !quantity) {
+    if (!price || !product || !quantity) {
       return res.status(400).json({
         success: false,
         message: "All fields are Required",
@@ -46,7 +46,7 @@ export const addItem = async (req, res) => {
     }
 
     const existingItem = cart.items.find(
-      (item) => item.Product.toString() === Product,
+      (item) => item.product.toString() === product,
     );
 
     if (existingItem) {
@@ -63,7 +63,7 @@ export const addItem = async (req, res) => {
     const svdItem = await cart.save();
 
     const idx = svdItem.items.findIndex(
-      (item) => item.Product.toString() === Product,
+      (item) => item.product.toString() === product,
     );
     await svdItem.populate(`items.${idx}.Product`);
 
@@ -104,7 +104,7 @@ export const updateQuantity = async (req, res) => {
     }
 
     // Find Cart
-    const cart = await Cart.findOne({ user });
+    let cart = await Cart.findOne({ user: req.user.userId });
 
     if (!cart) {
       return res.status(404).json({
@@ -113,7 +113,7 @@ export const updateQuantity = async (req, res) => {
       });
     }
 
-    const itemToBeUpdated = cart.items.find((item) => item._id == id);
+    const itemToBeUpdated = cart.items.find((item) => item._id.equals(id));
 
     if (!itemToBeUpdated) {
       return res.status(404).json({

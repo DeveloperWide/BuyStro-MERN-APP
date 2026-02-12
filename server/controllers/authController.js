@@ -55,7 +55,7 @@ export const signup = async (req, res) => {
 
     //  TODO: Create Cart Just After Login & Signup
     const cart = (await createCart(user._id)).populate({
-      path: "items.Product",
+      path: "items.product",
       select: "_id title images",
     });
 
@@ -106,7 +106,7 @@ export const login = async (req, res) => {
     }
 
     const { refreshToken, accessToken } = generateToken(
-      existingUser._id.toString()
+      existingUser._id.toString(),
     );
     sendRefreshToken(res, refreshToken);
 
@@ -114,7 +114,7 @@ export const login = async (req, res) => {
     const user = await existingUser.save();
 
     const cart = await Cart.findOne({ user: user._id }).populate({
-      path: "items.Product",
+      path: "items.product",
       select: "_id title images",
     });
     if (!cart) {
@@ -160,7 +160,7 @@ export const refreshToken = async (req, res) => {
     }
 
     const cart = await Cart.findOne({ user: user._id }).populate({
-      path: "items.Product",
+      path: "items.product",
       select: "_id images title",
     });
 

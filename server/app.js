@@ -30,7 +30,7 @@ app.use(
   cors({
     origin: "http://localhost:5173",
     methods: ["GET", "PUT", "POST", "PATCH", "DELETE"],
-  })
+  }),
 );
 
 // routes api

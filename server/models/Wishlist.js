@@ -10,7 +10,8 @@ const wishlistSchema = Schema({
 
   items: [
     {
-      Product: {
+      _id: false,
+      product: {
         type: Schema.Types.ObjectId,
         ref: "Product",
         required: true,
@@ -21,11 +22,6 @@ const wishlistSchema = Schema({
       },
     },
   ],
-});
-
-wishlistSchema.pre("save", function (next) {
-  this.totlePrice = this.items.reduce((acc, item) => acc + item.price, 0);
-  next();
 });
 
 const Wishlist = model("Wishlist", wishlistSchema);

@@ -1,3 +1,4 @@
+import User from "../models/User.js";
 import Wishlist from "../models/Wishlist.js";
 
 export const getItems = async (req, res) => {
@@ -16,6 +17,27 @@ export const getItems = async (req, res) => {
     return res.status(200).json({
       message: "All wishlists Items",
       wishlist,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      message: "Internal Server Error",
+    });
+  }
+};
+
+export const addItem = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.userId);
+    const { productId, price } = req.body;
+
+    const newItem = await Wishlist.create({
+      user: user._id,
+      items: [{ product: productId, price }],
+    });
+
+    return res.status(200).json({
+      message: "Successfully Added to Wishlist",
+      item: newItem,
     });
   } catch (err) {
     return res.status(500).json({
