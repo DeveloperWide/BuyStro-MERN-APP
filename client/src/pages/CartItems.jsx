@@ -1,5 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
-import { setCart } from "../redux/cartSlice/cartSlice";
+import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import CartBody from "../components/Cart/CartBody.jsx";
 import CartFooter from "../components/Cart/CartFooter.jsx";
@@ -7,7 +6,6 @@ import CartHeader from "../components/Cart/CartHeader.jsx";
 
 const CartItems = () => {
   const cart = useSelector((state) => state.cart.cart);
-  const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   useEffect(() => {
     console.log(auth);

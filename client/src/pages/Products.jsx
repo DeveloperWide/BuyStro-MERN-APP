@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import Header from "../layouts/Header";
-import { useSelector } from "react-redux";
 
 export const Products = () => {
   const [products, setProducts] = useState([]);
@@ -25,6 +24,7 @@ export const Products = () => {
       {products && products.length > 0 ? (
         products.map((product, idx) => {
           return (
+            // Prouct
             <ProductCard
               Title={product.title}
               Description={product.description}

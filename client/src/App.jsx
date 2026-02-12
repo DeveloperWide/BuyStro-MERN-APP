@@ -30,6 +30,7 @@ const App = () => {
   }, []);
 
   const auth = useSelector((state) => state.auth);
+  console.log("Token : ", auth.accessToken);
 
   const isAuthorized = auth.accessToken !== null && auth.user !== null;
 

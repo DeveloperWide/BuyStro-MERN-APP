@@ -7,7 +7,7 @@ const ProductButtons = ({ Details }) => {
   const dispatch = useDispatch();
 
   const productDetails = {
-    Product: Details._id,
+    product: Details._id,
     price: Details.price,
     quantity: 1,
   };

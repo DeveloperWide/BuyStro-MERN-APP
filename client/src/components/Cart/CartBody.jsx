@@ -18,7 +18,7 @@ const CartBody = ({ CartItems }) => {
       updateQuantity(id, obj)
         .then((res) => {
           dispatch(
-            updateItemLocal({ id, quantity: res.data.updatedItem.quantity })
+            updateItemLocal({ id, quantity: res.data.updatedItem.quantity }),
           );
         })
         .catch((err) => {
@@ -30,7 +30,7 @@ const CartBody = ({ CartItems }) => {
     updateQuantity(id, obj)
       .then((res) => {
         dispatch(
-          updateItemLocal({ id, quantity: res.data.updatedItem.quantity })
+          updateItemLocal({ id, quantity: res.data.updatedItem.quantity }),
         );
       })
       .catch((err) => {
@@ -77,16 +77,16 @@ const CartBody = ({ CartItems }) => {
 
             <td className=" py-3">
               <Link
-                to={`/product/${item.Product._id}`}
+                to={`/product/${item.product._id}`}
                 className="flex gap-3 items-center"
               >
                 <img
-                  src={item.Product.images[0]}
+                  src={item.product.images[0]}
                   alt={item.title}
                   className="h-20"
                 />
                 <p className="hidden sm:block text-lg">
-                  {truncateText(item.Product.title, 30)}
+                  {truncateText(item.product.title, 30)}
                 </p>
               </Link>
             </td>
