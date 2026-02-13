@@ -19,7 +19,6 @@ const App = () => {
     axiosInstance
       .get("/auth/refresh")
       .then((res) => {
-        console.log(res.data.cart);
         dispatch(setAccessToken(res.data.accessToken));
         dispatch(setUser(res.data.user));
         dispatch(setCart(res.data.cart));
@@ -30,7 +29,6 @@ const App = () => {
   }, []);
 
   const auth = useSelector((state) => state.auth);
-  console.log("Token : ", auth.accessToken);
 
   const isAuthorized = auth.accessToken !== null && auth.user !== null;
 

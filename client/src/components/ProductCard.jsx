@@ -7,11 +7,12 @@ import { useDispatch } from "react-redux";
 
 const ProductCard = ({ Title, Description, ImageSrc, productId, Price }) => {
   const dispatch = useDispatch();
-  const productDetails = { Product: productId, price: Price, quantity: 1 };
+  const productDetails = { product: productId, price: Price, quantity: 1 };
 
   const handleAddItem = async (details) => {
+    console.log("Details : ", details);
     const data = await addItem(details);
-    console.log(data);
+    console.log("Data : ", data);
     if (data.data.success) {
       if (data.data.exists) {
         console.log("NOT adding, Product Already in Cart");
