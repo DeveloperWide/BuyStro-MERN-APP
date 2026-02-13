@@ -65,7 +65,7 @@ export const addItem = async (req, res) => {
     const idx = svdItem.items.findIndex(
       (item) => item.product.toString() === product,
     );
-    await svdItem.populate(`items.${idx}.Product`);
+    await svdItem.populate(`items.${idx}.product`);
 
     return res.status(201).json({
       success: true,

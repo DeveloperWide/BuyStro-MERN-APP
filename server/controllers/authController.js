@@ -113,7 +113,7 @@ export const login = async (req, res) => {
     existingUser.refreshToken = refreshToken;
     const user = await existingUser.save();
 
-    const cart = await Cart.findOne({ user: user._id }).populate({
+    let cart = await Cart.findOne({ user: user._id }).populate({
       path: "items.product",
       select: "_id title images",
     });
